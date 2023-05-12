@@ -4,7 +4,7 @@ import joblib
 app = Flask(__name__)
 
 # Load the pre-trained machine learning model
-model = joblib.load(r"C:\Users\1\Desktop\webdev\TEMT_Backend\model.pkl")
+model = joblib.load('model.pkl')
 
 
 #Home Page route
