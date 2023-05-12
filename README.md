@@ -1,3 +1,4 @@
+
 # Solar Irradiance Prediction API
 This Flask app serves as an API for predicting solar irradiance based on several input parameters. The app uses a pre-trained machine learning model to make predictions.
 
@@ -82,3 +83,5 @@ json
 ## Authors
 Adetoki Timilehin
 Obiora Chukwuebuka
+
+# temt-energy-app
