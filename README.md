@@ -40,17 +40,16 @@ The app will run on [http://localhost:5000](http://localhost:5000) by default.
 ### POST /predict
 This endpoint accepts a JSON payload containing the following input parameters:
 
-temperature (float): the temperature in degrees Celsius
-humidity (float): the relative humidity as a percentage
-pressure (float): the atmospheric pressure in hPa
-wind_direction (float): the wind direction in degrees
-wind_speed (float): the wind speed in m/s
-day_of_year (int): the day of the year (1-365)
-time_of_day (int): the time of day in seconds past midnight
-Example request:
+- temperature : the temperature in degrees Celsius`
+- humidity : the relative humidity as a percentage
+- pressure : the atmospheric pressure in hPa
+- wind_direction : the wind direction in degrees
+- wind_speed : the wind speed in m/s
+- day_of_year : the day of the year (1-365)
+- time_of_day : the time of day in seconds past midnight
 
-json
-Copy code
+## Example request:
+
 ```bash
  {
   "temperature": 20,
@@ -81,7 +80,5 @@ json
 
 
 ## Authors
-Adetoki Timilehin
-Obiora Chukwuebuka
-
-# temt-energy-app
+- [Adetoki Timilehin]()
+- [Obiora Chukwuebuka](https://github.com/oEbuka)
