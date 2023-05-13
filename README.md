@@ -105,11 +105,10 @@ This endpoint accepts a JSON payload containing the following input parameters:
 json
 ```bash
 {
-    "Average_SpendingPower_Businesses": 58500000.0,
-    "Average_SpendingPower_Households": 600000.0,
     "Average_SpendingPower_Of_Town": 59100000.0,
     "Net_Revenue": 11000000.0,
-    "Potential_Revenue": 11820000.0
+    "Potential_Revenue": 11820000.0,
+    "Spread_Cost_of_Production": 120000.0
 }
 
 ```
