@@ -47,26 +47,33 @@ def predict():
 @app.route('/measure', methods=['POST'])
 def measure():
     # Extract the input parameters to be calculated from the request
-    Average_Individual_Income = request.json.get('Average_Individual_Income')
-    Average_Business_Income = request.json.get('Average_Business_Income')
-    Average_Transportation_Costs = request.json.get('Average_Transportation_Costs')
-    Average_Healthcare_Costs = request.json.get('Average_Healthcare_Costs')
-    Average_Miscellaneous_Expenses = request.json.get('Average_Miscellaneous_Expenses')
     Average_Household_Income = request.json.get('Average_Household_Income')
-    Average_Housing_Costs = request.json.get('Average_Housing_Costs')
-    Average_Food_Costs = request.json.get('Average_Food_Costs')
-    Average_Education_Costs = request.json.get('Average_Education_Costs')
+    Average_Business_Income = request.json.get('Average_Business_Income')
+    Average_Household_Costs = request.json.get('Average_Household_Costs')
+    Average_Business_Costs = request.json.get('Average_Business_Costs')
+    Estimated_Cost_Of_Project = request.json.get('Estimated_Cost_Of_Project')
+    Estimated_Annual_Operational_Costs = request.json.get('Estimated_Annual_Operational_Costs')
 
     # Validate input parameters
-    #Average_Individual_Income, Average_Business_Income, Average_Transportation_Costs, Average_Healthcare_Costs, Average_Miscellaneous_Expenses, Average_Household_Income, Average_Housing_Costs, Average_Food_Costs, Average_Education_Costs
-    missing_params = [param for param in ['Average_Individual_Income', 'Average_Business_Income', 'Average_Transportation_Costs', 'Average_Healthcare_Costs', 'Average_Miscellaneous_Expenses', 'Average_Household_Income', 'Average_Housing_Costs', 'Average_Food_Costs', 'Average_Education_Costs'] if request.json.get(param) is None]
+    missing_params = [param for param in ['Average_Household_Income', 'Average_Business_Income', 'Average_Household_Costs', 'Average_Business_Costs', 'Estimated_Cost_Of_Project', 'Estimated_Annual_Operational_Costs'] if request.json.get(param) is None]
     if missing_params:
         return jsonify({'error': f"Missing input parameters: {', '.join(missing_params)}"}), 400
 
     # Measure using the formulae
-    Average_Total_Income = float(Average_Individual_Income) + float(Average_Housing_Costs)
+    Average_SpendingPower_Households = float(Average_Household_Income) - float(Average_Household_Costs)
+    Average_SpendingPower_Businesses = float(Average_Business_Income) - float(Average_Business_Costs)
+    Average_SpendingPower_Of_Town = float(Average_SpendingPower_Businesses) + float(Average_SpendingPower_Households)
+    Annual_Potential_Revenue = (0.20) * Average_SpendingPower_Of_Town
+    Spread_Cost_of_Production = float(Estimated_Cost_Of_Project) / (25)
+    Net_Revenue = Annual_Potential_Revenue - float(Estimated_Annual_Operational_Costs) - Spread_Cost_of_Production
+
+
     # Return Measurement
-    return jsonify({' Average_Total_Income' : Average_Total_Income})
+    return jsonify({'Average_SpendingPower_Of_Town' : Average_SpendingPower_Of_Town,
+                    'Spread_Cost_of_Production': Spread_Cost_of_Production,
+                    'Potential_Revenue' :Annual_Potential_Revenue,
+                    'Net_Revenue' : Net_Revenue
+                    })
 
 if __name__ == '__main__':
     app.run(debug=True)

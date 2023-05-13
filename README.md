@@ -78,7 +78,51 @@ json
 }
 ```
 
+### POST /measure
+This endpoint accepts a JSON payload containing the following input parameters:
+
+- Average_household_income : the average income coming into each household annually
+- Average_Business_Income : the average income coming into each business annually
+- Average_Household_Costs : the average amount spent in each household annually
+- Average_Business_Costs : the average amount spent in each business annually
+- Estimated_Cost_Of_Project : the estimated amount to be spent on the project
+- Estimated_Annual_Operational_Costs : the estimated amount to be spent yearly on the project operation
+
+## Example request:
+
+```bash
+{
+    "Average_household_income" : "900000", 
+    "Average_Business_Income" : "60000000", 
+    "Average_Household_Costs" : "300000", 
+    "Average_Business_Costs" : "1500000", 
+    "Estimated_Cost_Of_Project" :" 3000000", 
+    "Estimated_Annual_Operational_Costs" : "700000"
+} 
+```
+### Example response:
+
+json
+```bash
+{
+    "Average_SpendingPower_Businesses": 58500000.0,
+    "Average_SpendingPower_Households": 600000.0,
+    "Average_SpendingPower_Of_Town": 59100000.0,
+    "Net_Revenue": 11000000.0,
+    "Potential_Revenue": 11820000.0
+}
+
+```
+### If any of the input parameters are missing, the API will return an error with a status code of 400:
+
+json
+```bash
+{
+  "error": "Missing input parameters{parameter name}"
+}
+```
+
 
 ## Authors
-- [Adetoki Timilehin]()
+- [Adetoki Timilehin](https://github.com/Adetoki-timilehin)
 - [Obiora Chukwuebuka](https://github.com/oEbuka)
