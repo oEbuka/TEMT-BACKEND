@@ -45,28 +45,28 @@ This endpoint accepts a JSON payload containing the following input parameters:
 - pressure : the atmospheric pressure in hPa
 - wind_direction : the wind direction in degrees
 - wind_speed : the wind speed in m/s
-- day_of_year : the day of the year (1-365)
-- time_of_day : the time of day in seconds past midnight
+- day_of_year : the day of the year (yyyy-mm-dd)
+- time_of_day : the time of day (hr:min)
 
 ## Example request:
 
 ```bash
- {
-  "temperature": 20,
-  "humidity": 50,
-  "pressure": 1013.25,
-  "wind_direction": 180,
-  "wind_speed": 5,
-  "day_of_year": 150,
-  "time_of_day": 780
-} 
+{
+  "temperature" : "12",
+  "humidity": "10",
+  "pressure" : "287",
+  "wind_direction" : "30",
+  "wind_speed" : "30",
+  "day_of_year" : "2023-05-19",
+  "time_of_day" : "09:57"
+}
 ```
 ### Example response:
 
 json
 ```bash
 {
-  "solar_irradiance": 400
+  "solar_irradiance": 300
 }
 ```
 ### If any of the input parameters are missing, the API will return an error with a status code of 400:
@@ -92,23 +92,23 @@ This endpoint accepts a JSON payload containing the following input parameters:
 
 ```bash
 {
-    "Average_household_income" : "900000", 
+    "Average_Household_Income" : "900000", 
     "Average_Business_Income" : "60000000", 
     "Average_Household_Costs" : "300000", 
     "Average_Business_Costs" : "1500000", 
     "Estimated_Cost_Of_Project" :" 3000000", 
     "Estimated_Annual_Operational_Costs" : "700000"
-} 
+}
 ```
 ### Example response:
 
 json
 ```bash
 {
-    "Average_SpendingPower_Of_Town": 59100000.0,
-    "Net_Revenue": 11000000.0,
-    "Potential_Revenue": 11820000.0,
-    "Spread_Cost_of_Production": 120000.0
+    "Average_SpendingPower_Of_Town": "59.1 million",
+    "Net_Revenue": "11.0 million",
+    "Potential_Revenue": "11.8 million",
+    "Spread_Cost_of_Production": 120000
 }
 
 ```
